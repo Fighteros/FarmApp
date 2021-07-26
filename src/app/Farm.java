@@ -4,70 +4,66 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Farm {
-    private final int foodQuantity = 10;
-    private final int waterQuantity = 5;
+    private  double foodQuantity = 10;
+    private  double waterQuantity = 5;
     private String farmName;
+    private Animal animal;
     private List<Horse> horseList = new ArrayList<>();
-    private Animal[] animal;
-    private Horse horse = new Horse("Sheba");
-    private Rabbit rabbit = new Rabbit("Freddy");
+    private List<Rabbit> rabbitList = new ArrayList<>();
 
     public Farm() {
+        horseList.add(new Horse("sheba"));
+        rabbitList.add(new Rabbit("Freddy"));
     }
 
     public Farm(String name) {
         farmName = name;
     }
 
-    public Farm(String farmName, Animal animal) {
-        this.farmName = farmName;
-        this.animal[Animal.numberOfAnimals] = animal;
-    }
-
-    public void horseEat(int foodQuantity) {
-        horse.eat(foodQuantity);
-    }
-
-    public void horseDrink(double waterQuantity) {
-        horse.drink(waterQuantity);
-    }
-
-    public void rabbitEat(double foodQuantity) {
-        rabbit.eat(foodQuantity);
-    }
-
-    public void rabbitDrink(double waterQuantity) {
-        rabbit.drink(waterQuantity);
-    }
-
-    public void animalEat(int foodQuantity, int index) {
-        animal[index].eat(foodQuantity);
-    }
-
-    public void animalDrink(double waterQuantity, int index) {
-        animal[index].drink(waterQuantity);
-    }
-
-    public void feedAnimal(int type, int index) {
+    // feed horse
+    public void feedAnimal(int type, int index, double foodQuantity) {
         switch (type) {
             case 0:
-                // feed horse
-                animal[index].eat(5);
-                break;
-
+                horseList.get(index).eat(foodQuantity);
+            case 1:
+                rabbitList.get(index).eat(foodQuantity);
+        }
+    }
+    public void irrigateAnimal(int type, int index, double waterQuantity){
+        switch (type){
+            case 0:
+                horseList.get(index).drink(waterQuantity);
+            case 1:
+                rabbitList.get(index).drink(waterQuantity);
         }
 
+    }
+
+    public void setFoodQuantity(double foodQuantity) {
+        this.foodQuantity = foodQuantity;
+    }
+
+    public void setWaterQuantity(double waterQuantity) {
+        this.waterQuantity = waterQuantity;
+    }
+
+    public  double getFoodQuantity() {
+        return foodQuantity;
+    }
+
+    public  double getWaterQuantity() {
+        return waterQuantity;
     }
 
     @Override
     public String toString() {
         return "Farm{" +
-                "farmName='" + farmName + '\'' +
-                ", number of Animals= " + Animal.numberOfAnimals +
-                ", foodQuantity=" + foodQuantity +
+                "foodQuantity=" + foodQuantity +
                 ", waterQuantity=" + waterQuantity +
-                ", horse=" + horse.toString() +
-                ", rabbit=" + rabbit.toString() +
+                ", farmName='" + farmName + '\'' +
+                ", animal=" + animal +
+                ", horseList=" + horseList +
+                ", rabbitList=" + rabbitList +
                 '}';
     }
 }

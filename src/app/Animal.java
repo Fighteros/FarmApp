@@ -1,14 +1,15 @@
 package app;
 
 public class Animal implements BioFunctions {
+    Farm farm = new Farm();
     static int numberOfAnimals;
     private String name;
     private int age;
     private int foodCap;
     private double waterCap;
     private Boolean isSick;
-    private double currentFoodQuantity = getFoodCap();
-    private double currentWaterQuantity = getWaterCap();
+    private double currentFoodQuantity;
+    private double currentWaterQuantity;
 
     public Animal() {
         numberOfAnimals++;
@@ -57,6 +58,7 @@ public class Animal implements BioFunctions {
     public void eat(double foodQuantity) {
         if (currentFoodQuantity <= getFoodCap()) {
             currentFoodQuantity += foodQuantity;
+            farm.setFoodQuantity(farm.getFoodQuantity() - foodQuantity);
         } else {
             System.out.println("the " + getName() + " isn't hungry!");
         }
@@ -89,6 +91,7 @@ public class Animal implements BioFunctions {
     public void drink(double waterQuantity) {
         if (currentWaterQuantity <= getWaterCap()) {
             currentWaterQuantity += waterQuantity;
+            farm.setWaterQuantity(farm.getWaterQuantity() - waterQuantity);
         } else {
             System.out.println("the " + getName() + " isn't hungry!");
         }
@@ -97,7 +100,8 @@ public class Animal implements BioFunctions {
     @Override
     public String toString() {
         return "Animal{" +
-                "name='" + name + '\'' +
+                "farm=" + farm +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", foodCap=" + foodCap +
                 ", waterCap=" + waterCap +
