@@ -10,7 +10,9 @@ public class Main {
         farm.horseEat(2);
         farm.rabbitEat(.5);
         farm.rabbitDrink(.5);
-        System.out.println(farm);
+
+        
+
 
     }
 }

@@ -1,9 +1,13 @@
 package app;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Farm {
     private final int foodQuantity = 10;
     private final int waterQuantity = 5;
     private String farmName;
+    private List<Horse> horseList = new ArrayList<>();
     private Animal[] animal;
     private Horse horse = new Horse("Sheba");
     private Rabbit rabbit = new Rabbit("Freddy");
@@ -42,6 +46,17 @@ public class Farm {
 
     public void animalDrink(double waterQuantity, int index) {
         animal[index].drink(waterQuantity);
+    }
+
+    public void feedAnimal(int type, int index) {
+        switch (type) {
+            case 0:
+                // feed horse
+                animal[index].eat(5);
+                break;
+
+        }
+
     }
 
     @Override
