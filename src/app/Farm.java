@@ -24,7 +24,6 @@ public class Farm {
         rabbitList = new ArrayList<>();
         horseList.add(new Horse("Sheba", this));
         rabbitList.add(new Rabbit("Freddy", this));
-        rabbitList.add(new Rabbit("Freddy", this));
     }
 
     // feed horse
@@ -32,8 +31,10 @@ public class Farm {
         switch (type) {
             case 0:
                 horseList.get(index).eat(foodQuantity);
+                break;
             case 1:
                 rabbitList.get(index).eat(foodQuantity);
+                break;
         }
     }
 
@@ -41,8 +42,10 @@ public class Farm {
         switch (type) {
             case 0:
                 horseList.get(index).drink(waterQuantity);
+                break;
             case 1:
                 rabbitList.get(index).drink(waterQuantity);
+                break;
         }
 
     }
