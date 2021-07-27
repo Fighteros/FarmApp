@@ -24,6 +24,7 @@ public class Farm {
         rabbitList = new ArrayList<>();
         horseList.add(new Horse("Sheba", this));
         rabbitList.add(new Rabbit("Freddy", this));
+        rabbitList.add(new Rabbit("Freddy", this));
     }
 
     // feed horse
