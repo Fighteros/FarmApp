@@ -24,29 +24,52 @@ public class Farm {
         rabbitList = new ArrayList<>();
         horseList.add(new Horse("Sheba", this));
         rabbitList.add(new Rabbit("Freddy", this));
-        rabbitList.add(new Rabbit("Freddy", this));
+    }
+
+    public void addHorse(Horse e) {
+        horseList.add(e);
+    }
+
+    public void addRabbit(Rabbit r) {
+        rabbitList.add(r);
     }
 
     // feed horse
     public void feedAnimal(int type, int index, double foodQuantity) {
         switch (type) {
             case 0:
-                horseList.get(index).eat(foodQuantity);
-                break;
+                try {
+                    horseList.get(index).eat(foodQuantity);
+                    break;
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("you have chosen to feed an animal that doesn't exist");
+                }
             case 1:
-                rabbitList.get(index).eat(foodQuantity);
-                break;
+                try {
+                    rabbitList.get(index).eat(foodQuantity);
+                    break;
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("you have chosen to feed an animal that doesn't exist");
+                }
         }
     }
 
     public void irrigateAnimal(int type, int index, double waterQuantity) {
         switch (type) {
             case 0:
-                horseList.get(index).drink(waterQuantity);
-                break;
+                try {
+                    horseList.get(index).drink(waterQuantity);
+                    break;
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("you have chosen to irrigate an animal that doesn't exit");
+                }
             case 1:
-                rabbitList.get(index).drink(waterQuantity);
-                break;
+                try {
+                    rabbitList.get(index).drink(waterQuantity);
+                    break;
+                } catch (IndexOutOfBoundsException e) {
+                    System.out.println("you have chosen to irrigate an animal that doesn't exit");
+                }
         }
 
     }
