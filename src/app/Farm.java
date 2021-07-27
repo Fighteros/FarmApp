@@ -9,6 +9,7 @@ public class Farm {
     private String farmName;
     private List<Horse> horseList;
     private List<Rabbit> rabbitList;
+    private List<Animal> animalList ;
 
     public Farm() {
         farmName = "default";
@@ -16,6 +17,9 @@ public class Farm {
         rabbitList = new ArrayList<>();
         horseList.add(new Horse("Sheba", this));
         rabbitList.add(new Rabbit("Freddy", this));
+        animalList = new ArrayList<>();
+        animalList.addAll(horseList);
+        animalList.addAll(rabbitList);
     }
 
     public Farm(String name) {
@@ -24,6 +28,9 @@ public class Farm {
         rabbitList = new ArrayList<>();
         horseList.add(new Horse("Sheba", this));
         rabbitList.add(new Rabbit("Freddy", this));
+        animalList = new ArrayList<>();
+        animalList.addAll(horseList);
+        animalList.addAll(rabbitList);
     }
 
     public void addHorse(Horse e) {
@@ -96,7 +103,7 @@ public class Farm {
                 "foodQuantity=" + foodQuantity +
                 ", waterQuantity=" + waterQuantity +
                 ", farmName='" + farmName + '\'' +
-                ", animal=" + Animal.numberOfAnimals +
+                ", animalList=" + animalList +
                 ", horseList=" + horseList +
                 ", rabbitList=" + rabbitList +
                 '}';
