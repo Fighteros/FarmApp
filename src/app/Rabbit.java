@@ -5,11 +5,12 @@ public class Rabbit extends Animal {
     private boolean hasBeenHunted = false;
     private boolean hasBunnies = false;
 
-    public Rabbit() {
+    public Rabbit(Farm farm) {
+        super(farm);
     }
 
-    public Rabbit(String name) {
-        super(name, 1, 1, 0.5);
+    public Rabbit(String name, Farm farm) {
+        super(name, farm, 1, 1, 0.5);
     }
 
     public boolean isMale() {
@@ -38,7 +39,7 @@ public class Rabbit extends Animal {
 
     @Override
     public String toString() {
-        return "rabbit{" +
+        return "Rabbit{" +
                 "isMale=" + isMale +
                 ", hasBeenHunted=" + hasBeenHunted +
                 ", hasBunnies=" + hasBunnies +

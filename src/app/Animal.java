@@ -1,25 +1,27 @@
 package app;
 
 public class Animal implements BioFunctions {
-    Farm farm = new Farm();
     static int numberOfAnimals;
     private String name;
     private int age;
-    private int foodCap;
+    private double foodCap;
     private double waterCap;
     private Boolean isSick;
     private double currentFoodQuantity;
     private double currentWaterQuantity;
+    Farm thisAnimalFarm;
 
-    public Animal() {
+    public Animal(Farm farm) {
+        thisAnimalFarm = farm;
         numberOfAnimals++;
     }
 
-    public Animal(String name, int age, int foodCap, double waterCap) {
+    public Animal(String name, Farm farm, int age, double foodCap, double waterCap) {
         this.name = name;
         this.age = age;
         this.foodCap = foodCap;
         this.waterCap = waterCap;
+        thisAnimalFarm = farm;
         numberOfAnimals++;
     }
 
@@ -58,11 +60,21 @@ public class Animal implements BioFunctions {
     public void eat(double foodQuantity) {
         if (currentFoodQuantity <= getFoodCap()) {
             currentFoodQuantity += foodQuantity;
-            farm.setFoodQuantity(farm.getFoodQuantity() - foodQuantity);
+            thisAnimalFarm.setFoodQuantity(thisAnimalFarm.getFoodQuantity() - foodQuantity);
         } else {
-            System.out.println("the " + getName() + " isn't hungry!");
+            System.out.println(getName() + " isn't hungry!");
         }
     }
+
+    public void drink(double waterQuantity) {
+        if (currentWaterQuantity <= getWaterCap()) {
+            currentWaterQuantity += waterQuantity;
+            thisAnimalFarm.setWaterQuantity(thisAnimalFarm.getWaterQuantity() - waterQuantity);
+        } else {
+            System.out.println(getName() + " isn't thirsty!");
+        }
+    }
+
 
     public int getAge() {
         return age;
@@ -88,19 +100,10 @@ public class Animal implements BioFunctions {
         this.currentWaterQuantity = currentWaterQuantity;
     }
 
-    public void drink(double waterQuantity) {
-        if (currentWaterQuantity <= getWaterCap()) {
-            currentWaterQuantity += waterQuantity;
-            farm.setWaterQuantity(farm.getWaterQuantity() - waterQuantity);
-        } else {
-            System.out.println("the " + getName() + " isn't hungry!");
-        }
-    }
-
     @Override
     public String toString() {
         return "Animal{" +
-                "farm=" + farm +
+                "farm=" + thisAnimalFarm +
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", foodCap=" + foodCap +

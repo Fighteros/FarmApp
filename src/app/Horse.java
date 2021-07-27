@@ -6,11 +6,12 @@ public class Horse extends Animal {
     private Boolean isRacingHorse = false;
 
 
-    public Horse() {
+    public Horse(Farm farm) {
+        super(farm);
     }
 
-    public Horse(String name) {
-        super(name, 5, 4, 4);
+    public Horse(String name, Farm farm) {
+        super(name, farm, 5, 4.0, 4.0);
     }
 
     public String getHairColor() {
@@ -39,10 +40,10 @@ public class Horse extends Animal {
 
     @Override
     public String toString() {
-        return
+        return "Horse{" +
                 "hairColor='" + hairColor + '\'' +
-                        ", speed=" + speed +
-                        ", isRacingHorse=" + isRacingHorse;
+                ", speed=" + speed +
+                ", isRacingHorse=" + isRacingHorse +
+                '}';
     }
-
 }
